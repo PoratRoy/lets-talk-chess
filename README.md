@@ -1,17 +1,9 @@
 # Lets - Talk - Chess
 
 ### Introduction
-This is a full-stack chat web application that can be up and running with just a few steps. 
+This is a full-stack chess game and chat application that can be up and running with just a few steps. 
 Frontend is built with React. 
-Backend is built with Express.js and Node.js. Real-time message broadcasting is developed using Socket.IO.
-___
-
-### Features
-This application provides users with the following features:
-
-- Authentication using JWT Tokens
-- A Private Chat functionality where users can chat with other users privately.
-- Real-time updates to the user list, conversation list, and conversation messages.
+Backend is built with Express.js and Node.js. Real-time message broadcasting and play moves is developed using Socket.IO.
 ___
 
 ### How to use
@@ -30,13 +22,7 @@ You can find detailed guides on how to do so [here](https://docs.mongodb.com/man
 - On the client directory:
 - ```REACT_APP_SERVER_CONTEXT_URL=<Your-Sever-Localhost-Number>```
 - ```REACT_APP_SERVER_URL=<Your-Sever-Localhost-Number>```
-
-<br/>Replace - ```<Your-DB-Collection-Name>``` and ```<Your-JWT-Password>``` with your new DB name and password.
+<br/>Replace - ```<Your-Client-Localhost-Number>``` and ```<Your-JWT-Password>``` with your localhost number and your password.
 5. Finally, all you have to do is type ```node index.js``` on the server terminal and ```npm start``` on the client terminal. 
 6. The frontend of the application will be automatically opened in your web browser and you can test it away.
-___
 
-### Screenshots
-![login_screen](https://user-images.githubusercontent.com/82472117/125211065-57c96200-e2ac-11eb-941e-e86a693e8f95.PNG)
-![chatScreenNoChat](https://user-images.githubusercontent.com/82472117/126360463-9b96450d-4f13-4902-94d8-5856e6a9bcfb.PNG)
-![chatPage](https://user-images.githubusercontent.com/82472117/126360481-53687879-569e-4067-baab-5695cab4659c.PNG)

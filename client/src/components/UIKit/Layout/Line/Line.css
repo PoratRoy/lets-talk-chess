@@ -1,0 +1,22 @@
+.line{
+    display: flex;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.line[justify="center"]{
+    justify-content: center;
+}
+
+.line[justify="evenly"]{
+    justify-content:space-evenly;
+}
+
+.line[justify="between"]{
+    justify-content:space-between;
+}
+
+.line[justify="around"]{
+    justify-content:space-around;
+}

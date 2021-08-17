@@ -1,0 +1,24 @@
+
+
+.white-slant{
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 0;
+    width: 25%;
+    border-bottom: 100vh solid var(--secondary-color);
+    border-left: 7em solid transparent;
+}
+
+
+.form-input-items > *{
+    position: relative;
+    height: 4vh;
+    width: 15vw;
+    margin-bottom: 10%;
+}
+
+
+
+
+

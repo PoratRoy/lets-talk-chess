@@ -1,0 +1,21 @@
+
+.chat-continer{
+    position: relative;
+
+    height: 100%;
+    width: 100%;
+}
+
+
+.chat-header{
+    position: absolute;
+    z-index: 1;
+    height: 10vh;
+    width: 100%;
+    background-color: var(--third-color);
+}
+
+.chat-group{
+    position: relative;
+    width: 100%;
+}

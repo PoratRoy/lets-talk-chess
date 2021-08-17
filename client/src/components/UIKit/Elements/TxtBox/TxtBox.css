@@ -1,0 +1,30 @@
+.txt-box-continer{
+    position: relative;
+}
+
+.login-form-input-username, .login-form-input-password{
+    border:3px solid rgb(77, 77, 87);
+    background-color: var(--primary-color);
+    color: var(--primary-text-color);
+}
+
+
+.login-form-input-username::placeholder, .login-form-input-password::placeholder{
+    color: var(--secondary-text-color);
+}
+
+
+.register-form-input-username, 
+.register-form-input-password,
+.register-form-input-name{
+    border:3px solid rgb(77, 77, 87);
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+}
+
+
+.register-form-input-username::placeholder, 
+.register-form-input-password::placeholder,
+.register-form-input-name::placeholder{
+    color: var(--hover-primary-color);
+}

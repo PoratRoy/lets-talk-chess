@@ -1,0 +1,77 @@
+.navbar-user-link{
+    position: relative;
+    width: 100%;
+}
+
+.user-link-btn{
+    width: 83%;
+    height: 5vh;
+    border:none;
+    border-bottom: 2px solid rgba(0, 0 , 0 , .2);
+    padding: 0.3em 1em;
+    color: var(--primary-text-color);
+    font-size:2.4rem;
+    font-weight: 700;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    background-color: transparent;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-bottom: 0.5em;
+}
+.user-link-btn:hover{
+    background-color: var(--hover-primary-color);
+    border-radius: 10px 10px 0 0;
+}
+
+
+.user-active{
+    display: inline-block;
+    height: 21px;
+    width: 21px;
+    border-radius: 50%;
+    background-color: var(--me-chat-color);
+    border:1px solid rgb(161, 182, 167);
+}
+
+.user-name{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 20%;
+}
+
+.user-btns{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 30%;
+}
+
+.user-game-btn, .user-chat-btn{
+    background-color: transparent;
+    border: none;
+    color: var(--primary-text-color);
+    font-size: 1em;
+    position: relative;
+}
+.user-game-btn:hover, .user-chat-btn:hover{
+    cursor: pointer;
+    color: var(--hover-primary-text-color);
+}
+.user-game-btn:active, .user-chat-btn:active{
+    cursor: pointer;
+    color: var(--active-primary-text-color);
+}
+
+.user-game-btn{
+    top: -2px;
+}
+
+.game-icon-new-game{
+    color: var(--me-chat-color);
+}
+.game-icon{
+    color: var(--primary-text-color);
+}

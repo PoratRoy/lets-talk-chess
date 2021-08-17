@@ -1,0 +1,21 @@
+.btn{
+    background-color: var(--primary-color);
+    border:3px solid rgb(77, 77, 87);  
+    font-size: 1.8rem;
+    word-wrap: break-word;
+    border-radius: 10px;
+    position: relative;
+    font-weight: 700;  
+    
+}
+
+.btn:hover{
+    cursor: pointer;
+    background-color: var(--hover-primary-color);
+}
+
+.btn:active{
+    cursor: pointer;
+    background-color: var(--active-primary-color);
+}
+

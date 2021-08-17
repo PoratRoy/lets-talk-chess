@@ -1,0 +1,66 @@
+.form {
+  position: relative;
+  top: 20vh;
+}
+
+.form-btn.Login,
+.form-btn.Register {
+  height: 7vh;
+  width: 35%;
+  font-size: 1.8rem;
+  word-wrap: break-word;
+  border-radius: 10px;
+  position: relative;
+  font-weight: 700;
+}
+
+.form-btn.Login {
+  color: var(--primary-text-color);
+  margin-top: 10%;
+  margin-bottom: 5%;
+  background-color: var(--primary-color);
+  border: 3px solid rgb(77, 77, 87);
+}
+.form-btn.Login:hover {
+  cursor: pointer;
+  background-color: var(--hover-primary-color);
+}
+.form-btn.Login:active {
+  cursor: pointer;
+  background-color: var(--active-primary-color);
+}
+
+.form-btn.Register {
+  color: var(--primary-color);
+  margin-top: 3%;
+  margin-bottom: 3%;
+  background-color: var(--secondary-color);
+  border: 3px solid rgb(77, 77, 87);
+}
+.form-btn.Register:hover {
+  cursor: pointer;
+  background-color: var(--hover-secondary-color);
+}
+.form-btn.Register:active {
+  cursor: pointer;
+  background-color: var(--active-secondary-color);
+}
+
+.form-title.Login {
+  font-weight: 900;
+  font-size: 3em;
+  color: var(--primary-color);
+}
+
+.form-title.Register {
+  font-weight: 900;
+  font-size: 3em;
+  color: var(--secondary-color);
+}
+
+.link.Register {
+  color: var(--secondary-color);
+}
+.link.Register:hover {
+    color: var(--hover-secondary-color);
+  }

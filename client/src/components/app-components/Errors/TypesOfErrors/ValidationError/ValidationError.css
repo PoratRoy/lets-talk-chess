@@ -1,0 +1,22 @@
+.error{
+    position: relative;
+    margin-top: -5%;
+    margin-bottom: 5%;
+    padding: 5px;
+    background-color: rgb(95, 69, 69);
+    border: 1px solid rgb(71, 51, 51);
+    color: rgb(218, 218, 218);
+    border-radius: 10px;
+    box-shadow: var(--primary-box-shadow);
+    animation: fadeout 3s 5s;
+    font-size: var(--text-font-size-s);
+}
+
+@keyframes fadeout{
+    from{
+        opacity: 1;
+    }
+    to{
+        opacity: 0;
+    }
+}

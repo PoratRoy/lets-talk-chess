@@ -1,0 +1,8 @@
+.promote-square{
+    width: 50%;
+    height: 50%;
+}
+
+.select-piece{
+    cursor: pointer;
+}

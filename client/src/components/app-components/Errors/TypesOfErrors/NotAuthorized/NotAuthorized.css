@@ -1,0 +1,20 @@
+
+.error-401-continer{
+    position:relative;
+    top: 20vh;
+    text-align: center;
+    color: var(--second-text-color);
+}
+
+.error-401{
+    font-size: 6rem;
+}
+
+.error-401-info{
+    font-size: 0.7rem;
+    margin-top: -3vh;
+}
+
+.error-401-link{
+    font-size: 0.7rem;
+}

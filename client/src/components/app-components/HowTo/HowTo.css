@@ -1,0 +1,29 @@
+.how-continer{
+    position: fixed;
+    top:63%;
+    left: 50%;
+    transform: translate(-50%,-60%);
+    height: 80vh;
+    width: 65%;
+    background-color:var(--primary-color);
+    border-radius: 10px;
+    overflow: scroll;
+    word-wrap: break-word;
+    color: var(--primary-text-color);
+}
+
+.how-continer h1{
+    text-align: center;
+    margin: 1.5em 3em;
+    font-size: 3rem;
+}
+
+.how-continer section{
+    margin: 1.5em 3em;
+    font-size: 1.5rem;
+}
+
+.how-continer section strong{
+    font-size: 2rem;
+}
+

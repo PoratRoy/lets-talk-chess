@@ -19,17 +19,17 @@ const NavBar = ({ isLobby, setUserData }) => {
         {!isLobby && (
           <Link to="/lobby" className="navbar-link-lobby">
             <i className="fas fa-concierge-bell"></i>
-            Back to lobby
+            <span className="navbar-link-text">Back to lobby</span>
           </Link>
         )}
         <div className="navbar-link-absolute">
           <Link to="/how" className="navbar-link-about">
             <i className="fas fa-book-open"></i>
-            How to play
+            <span className="navbar-link-text">How to play</span>
           </Link>
           <Link to="/" className="navbar-link-logout" onClick={handleLogout}>
             <i className="fas fa-sign-out-alt"></i>
-            Logout
+            <span className="navbar-link-text">Logout</span>
           </Link>
         </div>
       </section>

@@ -1,12 +1,10 @@
 .how-continer{
     position: fixed;
-    top:63%;
-    left: 50%;
-    transform: translate(-50%,-60%);
-    height: 80vh;
-    width: 65%;
+    top:9vh;
+    left: 0;
+    height: 92vh;
+    width: 100%;
     background-color:var(--primary-color);
-    border-radius: 10px;
     overflow: scroll;
     word-wrap: break-word;
     color: var(--primary-text-color);
@@ -14,16 +12,69 @@
 
 .how-continer h1{
     text-align: center;
-    margin: 1.5em 3em;
-    font-size: 3rem;
+    margin: 1em;
+    font-size: 2.5rem;
 }
 
 .how-continer section{
-    margin: 1.5em 3em;
-    font-size: 1.5rem;
+    margin: 1.2em;
+    font-size: 1rem;
 }
 
 .how-continer section strong{
-    font-size: 2rem;
+    font-size: 1.5rem;
 }
 
+
+@media only screen and (min-width: 450px){
+
+    .how-continer{
+        top:62%;
+        left: 50%;
+        transform: translate(-50%,-60%);
+        height: 85vh;
+        width: 80%;
+        border-radius: 10px;
+        overflow: scroll;
+        word-wrap: break-word;
+    }
+
+    .how-continer h1{
+        margin: 1.2em;
+        font-size: 2.7rem;
+    }
+    
+    .how-continer section{
+        margin: 1.4em;
+        font-size: 1.2rem;
+    }
+    
+    .how-continer section strong{
+        font-size: 1.6rem;
+    }
+}
+
+
+@media only screen and (min-width: 1200px){
+
+    .how-continer{
+        top:63%;
+        left: 50%;
+        height: 80vh;
+        width: 65%;
+    }
+
+    .how-continer h1{
+        margin: 1.5em 3em;
+        font-size: 3rem;
+    }
+    
+    .how-continer section{
+        margin: 1.5em 3em;
+        font-size: 1.5rem;
+    }
+    
+    .how-continer section strong{
+        font-size: 2rem;
+    }
+}

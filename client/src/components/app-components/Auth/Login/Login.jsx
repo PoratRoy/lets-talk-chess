@@ -65,7 +65,7 @@ const Login = () => {
           link="/register"
           linkTxt="Don't have an account?"
         >
-          <section className="form-input-items">
+          <section className="form-input-items-login">
             <TxtBox
               placeholder="Enter User Name.."
               value={userName}

@@ -40,3 +40,8 @@ process.on('unhandledRejection', (err, promise) => {
     server.close(()=> {process.exit(1)});
 })
 
+
+
+// /3.209.172.72:443
+//https://lets-talk-chess.netlify.app
+//https://lets-talk-chess.herokuapp.com/

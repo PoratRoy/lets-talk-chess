@@ -70,6 +70,7 @@ body{
     font-size: var(--text-font-size-s);
     color: var(--second-text-color);
     padding: 1px;
+    line-height: 1.6;
 }
 .link:hover{
     cursor: pointer;
@@ -81,14 +82,14 @@ body{
 }
 
 .txt{
+    position: relative;
     word-wrap: break-word;
     border-radius: 10px;
-    width: 100%;
-    height: 100%;
+    height: 130%;
 }
 
 .txt, .txt::placeholder{
-    font-size: 1rem;
+    font-size: 0.8rem;
 }
 
 .txt::placeholder{
@@ -101,4 +102,12 @@ body{
 }
 
 
+@media only screen and (min-width: 1200px){
+
+    .txt, .txt::placeholder{
+        font-size: 1rem;
+    }
+    
+
+}
 

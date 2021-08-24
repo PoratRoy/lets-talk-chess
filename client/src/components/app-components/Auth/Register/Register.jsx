@@ -79,7 +79,7 @@ console.log('2');
           link="/"
           linkTxt="Already have an account?"
         >
-          <section className="form-input-items">
+          <section className="form-input-items-register">
             <TxtBox
               className="text register-input"
               placeholder="Enter Your Name.."

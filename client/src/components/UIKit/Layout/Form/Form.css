@@ -1,29 +1,31 @@
 .form {
   position: relative;
-  top: 20vh;
+  top: 25vh;
+  text-align: center;
 }
 
 .form-btn.Login,
 .form-btn.Register {
-  height: 7vh;
-  width: 35%;
-  font-size: 1.8rem;
+  padding: 0.5em 0.5em;
   word-wrap: break-word;
   border-radius: 10px;
   position: relative;
   font-weight: 700;
 }
 
-.form-btn.Login {
-  color: var(--primary-text-color);
-  margin-top: 10%;
-  margin-bottom: 5%;
-  background-color: var(--primary-color);
-  border: 3px solid rgb(77, 77, 87);
+.form-btn.Login{
+  font-size: 1.3rem;
 }
-.form-btn.Login:hover {
-  cursor: pointer;
-  background-color: var(--hover-primary-color);
+.form-btn.Register{
+  font-size: 1.3rem;
+}
+
+.form-btn.Login {
+  background-color: var(--primary-color);
+  color: var(--primary-text-color);
+  border: 3px solid rgb(77, 77, 87);
+  margin-top: 2em;
+  margin-bottom: 10%;
 }
 .form-btn.Login:active {
   cursor: pointer;
@@ -31,15 +33,11 @@
 }
 
 .form-btn.Register {
-  color: var(--primary-color);
-  margin-top: 3%;
-  margin-bottom: 3%;
   background-color: var(--secondary-color);
+  color: var(--primary-color);
   border: 3px solid rgb(77, 77, 87);
-}
-.form-btn.Register:hover {
-  cursor: pointer;
-  background-color: var(--hover-secondary-color);
+  margin-top: 2em;
+  margin-bottom: 8%;
 }
 .form-btn.Register:active {
   cursor: pointer;
@@ -48,19 +46,106 @@
 
 .form-title.Login {
   font-weight: 900;
-  font-size: 3em;
+  font-size: 2.3em;
   color: var(--primary-color);
 }
 
 .form-title.Register {
   font-weight: 900;
-  font-size: 3em;
+  font-size: 2em;
   color: var(--secondary-color);
 }
 
 .link.Register {
   color: var(--secondary-color);
 }
+
 .link.Register:hover {
     color: var(--hover-secondary-color);
+}
+
+
+@media only screen and (min-width: 450px){
+    
+  .form {
+    top: 25vh;
   }
+
+  .form-btn.Login,
+  .form-btn.Register {
+    font-size: 1.4rem;
+    margin-top: 3vh;
+  }
+
+  .form-title.Login{
+    font-size:2.6rem;
+  }
+
+  .form-title.Register {
+    font-size:2rem;
+  }
+}
+
+@media only screen and (min-width: 700px){
+    
+  .form {
+    top: 20vh;
+  }
+
+  .form-btn.Login,
+  .form-btn.Register {
+    font-size: 1.6rem;
+    margin-top: 2em;
+  }
+
+  .form-title.Login{
+    font-size: 3.1rem;
+  }
+
+  .form-title.Register {
+    font-size: 2.8rem;
+  }
+  
+
+}
+
+@media only screen and (min-width: 1200px){
+  .form {
+    top: 20vh;
+    right: 0;
+    text-align:start;
+  }
+
+  .form-btn.Login,
+  .form-btn.Register {
+    font-size: 1.8rem;
+  }
+
+  .form-btn.Login {
+    margin-top: 2em;
+    margin-bottom: 5%;
+  }
+  .form-btn.Login:hover {
+    cursor: pointer;
+    background-color: var(--hover-primary-color);
+  }
+
+  .form-btn.Register {
+    margin-top: 2em;
+    margin-bottom: 3%;
+  }
+  .form-btn.Register:hover {
+    cursor: pointer;
+    background-color: var(--hover-secondary-color);
+  }
+
+  .form-title.Login {
+    font-size: 3.5rem;
+  }
+  
+  .form-title.Register {
+    font-size: 3rem;
+  }
+
+
+}

@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useDrop } from "react-dnd";
 import { handleMove, gameSubject, hideLegalMoves } from "../../../Logic/Game";
+import { getMembers } from "../../../Logic/Common"
 import CurrentGameContext from '../../../context/CurrentGameContext'
 import HasErrorContext from "../../../context/HasErrorContext"; 
 import UserContext from '../../../context/UserContext'
@@ -23,11 +24,10 @@ const BoardSquare = ({ piece, black, position, legal }) => {
     drop: async (item) => {
       const [fromPosition] = item.id.split("_");
 
-      let currentPlayer = currentGame?.members[0]._id === userData.user._id ? currentGame?.members[0] : currentGame?.members[1]
-      let otherPlayer = currentGame?.members[0]._id === userData.user._id ? currentGame?.members[1] : currentGame?.members[0]
+      const members = getMembers(currentGame?.members, userData.user);
 
       try{
-        await handleMove(fromPosition, position, currentPlayer, otherPlayer);
+        await handleMove(fromPosition, position, members.currentPlayer, members.otherPlayer);
         hideLegalMoves();
       }catch(error){
         setHasError(error)

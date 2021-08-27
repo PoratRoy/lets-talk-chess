@@ -123,12 +123,12 @@ export const move= async (from,to,promotion, currentPlayer, otherPlayer)=>{
     
         if(legalMove){
     
-            await updateGameDB(currentPlayer, otherPlayer, piece)
             const data = {pieces: piece ? [piece] : null, isNew: true}
             eatenPiecesSubject.next(data)
-    
+            
             turnSubject.next(whoseTurnNow())
             updateGame(currentPlayer.color)
+            await updateGameDB(currentPlayer, otherPlayer, piece)
         }
     }
 }

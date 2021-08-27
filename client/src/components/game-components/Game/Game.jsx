@@ -13,6 +13,7 @@ import {
   quitGame,
   newGame,
 } from "../../../Logic/Game";
+import { nameLength, getMembers } from '../../../Logic/Common'
 import CurrentGameContext from "../../../context/CurrentGameContext";
 import CurrentChatContext from "../../../context/CurrentChatContext";
 import HasErrorContext from "../../../context/HasErrorContext";
@@ -38,22 +39,10 @@ const Game = () => {
   const { userData, setUserData } = useContext(UserContext);
   const { currentGame } = useContext(CurrentGameContext);
   const { socket } = useContext(SocketContext);
-  
-  let currentPlayer = currentGame?.members[0]._id === userData.user._id ? currentGame?.members[0] : currentGame?.members[1]
-  let otherPlayer = currentGame?.members[0]._id === userData.user._id ? currentGame?.members[1] : currentGame?.members[0];
+
+  let members = getMembers(currentGame?.members, userData.user);
  
   //#endregion
-
-  //Size of the title by the length of the name
-  const len = otherPlayer.name.length;
-  let length = "";
-  if (len <= 5) {
-    length = "s";
-  } else if (len > 5 && len < 20) {
-    length = "m";
-  } else {
-    length = "l";
-  }
 
   useEffect(() => {
     //Init new game or load existing one
@@ -64,7 +53,7 @@ const Game = () => {
         setResult(game.result);
         setCheck(game.isCheck);
         setPosition(game.position);
-        socket.emit("newMove", game, otherPlayer._id);
+        socket.emit("newMove", game, members.otherPlayer._id);
       }
     });
 
@@ -76,7 +65,7 @@ const Game = () => {
           data.pieces.map((piece) => {
             addPieceToEatenPieces(piece);
             if (data.isNew) {
-              socket.emit("newEatenPiece", piece, otherPlayer._id);
+              socket.emit("newEatenPiece", piece, members.otherPlayer._id);
             }
           });
         }
@@ -87,7 +76,7 @@ const Game = () => {
     const turnSubscribe = turnSubject.subscribe((turn) => {
       const currentTurn = turn ? turn : whoseTurnNow();
       setPlayerTurn(currentTurn);
-      socket.emit("turn", currentTurn, otherPlayer._id);
+      socket.emit("turn", currentTurn, members.otherPlayer._id);
     });
 
     return () => {
@@ -95,7 +84,7 @@ const Game = () => {
       pieceSubscribe.unsubscribe();
       turnSubscribe.unsubscribe();
     };
-  }, [otherPlayer._id, socket]);
+  }, [members.otherPlayer._id, socket]);
 
   useEffect(() => {
     //Alert other player about the socket actions
@@ -135,7 +124,7 @@ const Game = () => {
     let group;
     try {
       group = await Axios.get(
-        `${process.env.REACT_APP_SERVER_URL}groups/members/${userData.user._id}/${otherPlayer._id}`
+        `${process.env.REACT_APP_SERVER_URL}groups/members/${userData.user._id}/${members.otherPlayer._id}`
       );
     } catch (error) {
       setHasError(error)
@@ -148,7 +137,7 @@ const Game = () => {
         //create new group with the selected user
         const newGroup = {
           senderId: userData.user._id,
-          receiverId: otherPlayer._id,
+          receiverId: members.otherPlayer._id,
           createdAt: Date.now(),
         };
 
@@ -168,7 +157,7 @@ const Game = () => {
 
   const playerQuit = async () => {
     try{
-      await quitGame(currentPlayer, otherPlayer);
+      await quitGame(members.currentPlayer, members.otherPlayer);
       restartGameDetails();
     }catch(error){
       setHasError(error)
@@ -177,7 +166,7 @@ const Game = () => {
 
   const gameOverNewGame = async () => {
     try{
-      await newGame(currentPlayer, otherPlayer);
+      await newGame(members.currentPlayer, members.otherPlayer);
       restartGameDetails();
     }catch(error){
       setHasError(error)
@@ -188,7 +177,7 @@ const Game = () => {
     setWhiteEatenPieces([]);
     setBlackEatenPieces([]);
     setPlayerTurn("w");
-    socket.emit("restartGameDetails", otherPlayer._id);
+    socket.emit("restartGameDetails", members.otherPlayer._id);
   };
 
   return (
@@ -206,8 +195,8 @@ const Game = () => {
               <div className="game-header">
                 {currentGame ? (
                   <>
-                    <div className="game-title" lenght={length}>
-                      Playing with {otherPlayer.name}
+                    <div className="game-title" lenght={nameLength(members.otherPlayer)}>
+                      Playing with {members.otherPlayer.name}
                     </div>
                   </>
                 ) : null}

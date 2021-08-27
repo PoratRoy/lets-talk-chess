@@ -47,11 +47,12 @@ const HowTo = () => {
           <p>
             The <strong>Pawn</strong> on its first move may move either one or
             two squares straight forward.
-            <div>
+            <br/>
+            <span>
               After its first move the Pawn may only advance one square at a
               time. The Pawn captures by moving diagonally one square forward in
               each direction.
-            </div>
+            </span>
             The Pawn cannot move or capture backwards!
           </p>
         </section>
@@ -59,10 +60,11 @@ const HowTo = () => {
         <section>
           <p>
             <strong>Castle</strong> Castling in both directions:
-            <div>
+            <br/>
+            <span>
               The King moves two squares in the direction of the Rook, the Rook
               jumps over the King and lands on the square next to it.
-            </div>
+            </span>
           </p>
         </section>
         <section>

@@ -12,8 +12,6 @@
     padding: 0.3em 0em;
     font-size:2.1rem;
     font-weight: 700;
-    overflow:hidden;
-    text-overflow:ellipsis;
     background-color: transparent;
     display: flex;
     justify-content: space-evenly;
@@ -27,19 +25,52 @@
     display: flex;
     justify-content:left;
     align-items: center;
-    width: 30%;
-    text-overflow:clip;
+    width: 45%;
     gap: 0.2em;
+    position: relative;
 }
 
 .user-active{
+    position: absolute;
+    bottom: 10px;
+    left: -20px;
     display: inline-block;
-    height: 17px;
-    width: 17px;
+    height: 15px;
+    width: 15px;
     border-radius: 50%;
     background-color: var(--me-chat-color);
     border:1px solid rgb(161, 182, 167);
 }
+
+.user-name-name{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-name-name:hover{
+    cursor: pointer;
+}
+
+
+.user-name-name::after{
+    content: attr(data-tooltip);
+    position: absolute;
+    top: 45px;
+    left: 0;
+    padding: 0.5em;
+    background-color: rgba(0, 0 , 0 , .5);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: left;
+    opacity: 0;
+}
+
+.user-name-name:active::after{
+    opacity: 1;
+}
+
 
 .user-btns{
     display: flex;
@@ -78,16 +109,16 @@
 @media only screen and (min-width: 450px){
 
     .user-active{
-        height: 18px;
-        width: 18px;
+        bottom: 9px;
+        left: -20px;
     }
 }
 
 @media only screen and (min-width: 700px){
 
     .user-active{
-        height: 19px;
-        width: 19px;
+        bottom: 9px;
+        left: -20px;
     }
 }
 
@@ -104,13 +135,9 @@
         border-radius: 10px 10px 0 0;
     }
 
-    .user-name{
-        width: 30%;
-    }
-
     .user-active{
-        height: 20px;
-        width: 20px;
+        bottom: 10px;
+        left: -20px;
     }
  
 }

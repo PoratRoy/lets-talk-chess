@@ -47,7 +47,7 @@ const Lobby = () => {
       setGameAlertIds(prev => [...prev,data.senderId])
     })
 
-  },[socket])
+  })
 
   //Add the new user to the users array so he will show up on the list
   const addNewUser = async (userId) => {

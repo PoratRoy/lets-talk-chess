@@ -70,7 +70,7 @@ const UserLink = ({ user, isActive, isGameAlert }) => {
       <div className="user-link-btn">
         <div className="user-name">
           {isActive && <div className="user-active"></div>}
-          {user.name}
+          <span data-tooltip={user.name} className="user-name-name">{user.name}</span>
         </div>
         <div className="user-btns">
           <button className="user-game-btn" onClick={sendGameRequest}>

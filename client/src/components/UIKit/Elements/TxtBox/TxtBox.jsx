@@ -12,6 +12,7 @@ const TxtBox = ({ clsText,type, value, setValue, placeholder, children }) => {
         value={value}
         placeholder={placeholder}
         onChange={(e) => setValue(e.target.value)}
+        autoComplete="on"
       />
       {children}
     </div>

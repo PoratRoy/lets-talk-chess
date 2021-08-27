@@ -10,38 +10,35 @@
 
 .header-title{
     letter-spacing:2px;
-    font-weight: bold;
+    font-weight: 700;
     color: var(--primary-text-color);
 }
 
 .header-title[lenght="s"]{
-    font-size: var(--text-font-size-xxl);
+    font-size: 2rem;
 }
 .header-title[lenght="m"]{
-    font-size: var(--text-font-size-xl);
+    font-size: 1.5rem;
 }
 .header-title[lenght="l"]{
-    font-size: var(--text-font-size-l);
+    font-size: 1rem;
 }
 
 
-.header-exist{
-    position: absolute;
-    top: 15%;
-    right: 2%;
-    font-size: var(--text-font-size-l);
-    color: var(--second-text-color);
-    border: 3px solid rgba(77,77,87,.2);
-    border-radius: 50%;
-    background-color: transparent;
-}
+@media only screen and (min-width: 1200px){
 
-.header-exist:hover{
-    cursor: pointer;
-    color: var(--hover-second-text-color);
-}
+    .chat-header{
+        height: 10vh;
+    }
 
-.header-exist:active{
-    cursor: pointer;
-    color: rgb(104, 104, 104);
+    .header-title[lenght="s"]{
+        font-size: 2.5rem;
+    }
+    .header-title[lenght="m"]{
+        font-size: 2rem;
+    }
+    .header-title[lenght="l"]{
+        font-size: 1.4rem;
+    }
+
 }

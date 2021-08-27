@@ -1,31 +1,23 @@
 
   
+.chats{
+  padding: 1% 0 0 1.5%;
+  position: relative;
+  top:7vh;
+  width: 98%;
+  height: 70vh;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+}
+
+
+
+@media only screen and (min-width: 1200px){
+
   .chats{
-    padding: 1% 0 0 1.5%;
-    position: relative;
     top:10vh;
-    width: 98%;
     height: 60vh;
-    overflow-y: scroll;
-    display: flex;
-    flex-direction: column;
   }
 
-/* width */
-::-webkit-scrollbar {
-  width: 10px;
 }
-/* Track */
-::-webkit-scrollbar-track {
-  background: transparent; 
-}
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #888; 
-  border-radius: 10px;
-}
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555; 
-}
-

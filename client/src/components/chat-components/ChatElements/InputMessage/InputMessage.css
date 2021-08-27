@@ -1,13 +1,14 @@
 
 
 .input-continer{
-    position: absolute;
+    position: fixed;
     z-index: 1;
-    bottom: -223px;
-    background-color:var(--third-color) ;
-    height: 13vh;
+    bottom: 0;
+    height: 15vh;
+    width: 100%; 
     display: flex;
     align-items: center;
+    background-color:var(--third-color) ;
 }
 
 .input-items{
@@ -20,6 +21,8 @@
     line-height: 1.5;
     min-height: 5vh;
     color: var(--primary-color);
+    width: 85%;
+    /* margin: 0 2em 0 0.5em; */
 }
 
 .input-text, .input-text::placeholder{
@@ -31,26 +34,57 @@
 }
 
 .input-btn{
-    position: relative;
-    border: none;
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
     background-color: var(--secondary-color);
+    border: 5px solid var(--secondary-color);
+    border-radius: 50%;
+    width: 3em;
+    height: 3em;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .input-btn-icon{
     position: relative;
-    right: 4px;
-    top: 1px;
-    font-size: 3.4em;
+    font-size: 2.4rem;
     color: var(--primary-color);
-}
-.input-btn:hover{
-    cursor: pointer;
-    background-color: var(--hover-secondary-color);
+    border-radius: 50%;
 }
 .input-btn:active{
     cursor: pointer;
     background-color: var(--active-secondary-color);
+}
+
+@media only screen and (min-width: 450px){
+
+    .input-continer{
+        height: 12vh;
+    }
+
+    .input-text{
+        width: 90%;
+    }
+    
+}
+
+
+@media only screen and (min-width: 1200px){
+
+    .input-continer{
+        position: fixed;
+        z-index: 1;
+        bottom: 0;
+        height: 13.5vh;
+    }
+
+    .input-text{
+        width: 100%;
+    }
+
+        
+    .input-btn:hover{
+        cursor: pointer;
+        background-color: var(--hover-secondary-color);
+    }
+
 }

@@ -47,20 +47,20 @@ const Lobby = () => {
     socket.on("alertAboutNewGame", (data) => {
       setGameAlertIds((prev) => [...prev, data.senderId]);
     });
-  });
 
-  //Add the new user to the users array so he will show up on the list
-  const addNewUser = async (userId) => {
-    try {
-      const result = await Axios.get(
-        `${process.env.REACT_APP_SERVER_URL}private/${userId}`,
-        { headers: { Authorization: localStorage.getItem("auth-Token") } }
-      );
-      setUsers((prev) => [...prev, result.data]);
-    } catch (error) {
-      setHasError(error);
-    }
-  };
+    //Add the new user to the users array so he would show up in the lobby list
+    const addNewUser = async (userId) => {
+      try {
+        const result = await Axios.get(
+          `${process.env.REACT_APP_SERVER_URL}private/${userId}`,
+          { headers: { Authorization: localStorage.getItem("auth-Token") } }
+        );
+        setUsers((prev) => [...prev, result.data]);
+      } catch (error) {
+        setHasError(error);
+      }
+    };
+  },[setUsers, setHasError]);
 
   //Controlle the users list
   useEffect(() => {
@@ -100,7 +100,13 @@ const Lobby = () => {
         <Row>
           <header className="lobby-header">All Your Friends</header>
 
-          {loading ? <img src={require('../../../assets/app-images/loading.gif').default} aly="loading..." className="lobby-loading" /> : null}
+          {loading ? (
+            <img
+              src={require("../../../assets/app-images/loading.gif").default}
+              aly="loading..."
+              className="lobby-loading"
+            />
+          ) : null}
 
           <ul className="lobby-groups">
             {users.map((u) => (

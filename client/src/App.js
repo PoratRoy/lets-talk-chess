@@ -6,6 +6,7 @@ import UserContext from "context/UserContext";
 import { SocketContext, socket } from "context/SocketContext";
 import CurrentChatContext from "context/CurrentChatContext";
 import CurrentGameContext from "context/CurrentGameContext";
+import HasErrorContext from "context/HasErrorContext";
 import PrivateRoute from "components/app-components/routing/PrivateRouting";
 
 import Login from "components/app-components/Auth/Login/Login";
@@ -29,6 +30,7 @@ function App() {
 
   const [currentChat, setCurrentChat] = useState(null);
   const [currentGame, setCurrentGame] = useState(null);
+  const [hasError, setHasError] = useState(null);
 
   useEffect(() => {
     //Find if there is a token
@@ -66,7 +68,8 @@ function App() {
         <GamePlayersContext.Provider value={{ playersData, setPlayersData }}>
         <CurrentChatContext.Provider value={{ currentChat, setCurrentChat }}>
         <CurrentGameContext.Provider value={{ currentGame, setCurrentGame }}>
-          <UserContext.Provider value={{ userData, setUserData }}>
+        <HasErrorContext.Provider value={{ hasError, setHasError }}>
+        <UserContext.Provider value={{ userData, setUserData }}>
             <SocketContext.Provider value={{ socket }}>
               <Switch>
                 <Route path="/" exact component={Login} />
@@ -81,6 +84,7 @@ function App() {
               </Switch>
             </SocketContext.Provider>
           </UserContext.Provider>
+          </HasErrorContext.Provider>
           </CurrentGameContext.Provider>
           </CurrentChatContext.Provider>
         </GamePlayersContext.Provider>

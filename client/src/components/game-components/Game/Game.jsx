@@ -16,7 +16,7 @@ import {
 import { nameLength, getMembers } from '../../../Logic/Common'
 import CurrentGameContext from "../../../context/CurrentGameContext";
 import CurrentChatContext from "../../../context/CurrentChatContext";
-import HasErrorContext from "../../../context/HasErrorContext";
+import HasErrorContext from '../../../context/HasErrorContext';
 import { SocketContext } from "../../../context/SocketContext";
 import UserContext from "../../../context/UserContext";
 import Chat from "../../chat-components/Chat/Chat";
@@ -29,12 +29,12 @@ const Game = () => {
   const [blackEatenPieces, setBlackEatenPieces] = useState([]);
   const [openChatTab, setOpenChatTab] = useState(false);
   const [playerTurn, setPlayerTurn] = useState("");
-  const [hasError, setHasError] = useState(null);
-  const [check, setCheck] = useState(false);
   const [position, setPosition] = useState();
+  const [check, setCheck] = useState(false);
   const [result, setResult] = useState();
   const [board, setBoard] = useState([]);
 
+  const { hasError, setHasError } = useContext(HasErrorContext);
   const { setCurrentChat } = useContext(CurrentChatContext);
   const { userData, setUserData } = useContext(UserContext);
   const { currentGame } = useContext(CurrentGameContext);
@@ -189,7 +189,6 @@ const Game = () => {
       {hasError ? (
         <ErrorPage error={hasError} />
       ) : (
-        <HasErrorContext.Provider value={{ setHasError }}>
           <div className="game-page">
             <div className="game-continer">
               <div className="game-header">
@@ -240,7 +239,6 @@ const Game = () => {
               </section>
             )}
           </div>
-        </HasErrorContext.Provider>
       )}
     </>
   );

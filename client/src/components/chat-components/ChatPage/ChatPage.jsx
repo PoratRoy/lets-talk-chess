@@ -1,4 +1,4 @@
-import React, { useState, useContext} from "react";
+import React, { useContext} from "react";
 import HasErrorContext from "../../../context/HasErrorContext";
 import UserContext from "../../../context/UserContext";
 import ErrorPage from "../../app-components/Errors/ErrorPage/ErrorPage";
@@ -8,7 +8,8 @@ import "./ChatPage.css";
 
 const ChatPage = () => {
 
-  const [hasError, setHasError] = useState(null);
+
+  const { hasError } = useContext(HasErrorContext);
   const { setUserData } = useContext(UserContext);
 
   return (
@@ -19,13 +20,11 @@ const ChatPage = () => {
       {hasError ? (
         <ErrorPage error={hasError} />
       ) : (
-        <HasErrorContext.Provider value={{ setHasError }}>
           <div className="chat-card">
             
             <Chat/>
 
           </div>
-        </HasErrorContext.Provider>
       )}
     </>
   );

@@ -40,13 +40,18 @@ const Lobby = () => {
       setActiveUsers(data);
     });
 
-    socket.on("getNewRegisterUser", (data) => {
-      data && addNewUser(data);
-    });
-
     socket.on("alertAboutNewGame", (data) => {
       setGameAlertIds((prev) => [...prev, data.senderId]);
     });
+  }, [socket]);
+
+  useEffect(()=>{
+    socket.on("getNewRegisterUser", (userId) => {
+      if(userId && userId !== userData.user._id){
+        addNewUser(userId);
+      }
+    });
+  },[socket])
 
     //Add the new user to the users array so he would show up in the lobby list
     const addNewUser = async (userId) => {
@@ -60,7 +65,6 @@ const Lobby = () => {
         setHasError(error);
       }
     };
-  },[setUsers, setHasError]);
 
   //Controlle the users list
   useEffect(() => {
@@ -103,7 +107,7 @@ const Lobby = () => {
           {loading ? (
             <img
               src={require("../../../assets/app-images/loading.gif").default}
-              aly="loading..."
+              alt="loading..."
               className="lobby-loading"
             />
           ) : null}

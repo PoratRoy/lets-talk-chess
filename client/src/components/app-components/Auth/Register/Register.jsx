@@ -31,13 +31,12 @@ const Register = () => {
     try {
       //Try to register. if succesed login with the same new user
       const newUser = { name, userName, password };
-      console.log('1');
+      
       await Axios.post(
         `${process.env.REACT_APP_SERVER_URL}auth/register`,
         newUser,
         config
       );
-console.log('2');
       const loginUser = await Axios.post(
         `${process.env.REACT_APP_SERVER_URL}auth/login`,
         {

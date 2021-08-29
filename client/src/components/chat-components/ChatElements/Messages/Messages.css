@@ -5,7 +5,7 @@
   position: relative;
   top:7vh;
   width: 98%;
-  height: 70vh;
+  height: 74vh;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
@@ -17,7 +17,7 @@
 
   .chats{
     top:10vh;
-    height: 60vh;
+    height: 62vh;
   }
 
 }

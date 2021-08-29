@@ -22,7 +22,6 @@ const Chat = () => {
   const history = useHistory();
   //#endregion
 
-
   useEffect(() => {
     //Init the new messaga
     socket.on("newArrivalMessageToClient", (data) => {
@@ -66,7 +65,6 @@ const Chat = () => {
     getMessages();
   }, [currentChat, history, setHasError]);
 
-
   return (
     <>
       <div className="chat-continer">
@@ -76,9 +74,10 @@ const Chat = () => {
 
         <section className="chat-group">
           <Messages messages={messages} user={userData.user} />
-
-          <InputMessage messages={messages} setMessages={setMessages} />
         </section>
+        <label className="test">
+          <InputMessage messages={messages} setMessages={setMessages} />
+        </label>
       </div>
     </>
   );

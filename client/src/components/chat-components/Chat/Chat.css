@@ -20,12 +20,25 @@
     width: 100%;
 }
 
+.test{
+    position: fixed;
+    z-index: 1;
+    bottom: 0;
+    height: 10.5vh;
+    width: 100%; 
+}
 
 
 @media only screen and (min-width: 1200px){
 
     .chat-header{
         height: 10vh;
+    }
+
+    .test{
+        position: absolute;
+        bottom: 0;
+        height: 11.5vh;
     }
 
 }

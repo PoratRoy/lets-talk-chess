@@ -93,7 +93,7 @@ const Lobby = () => {
 
     socket.emit("getAllActiveUsers");
   }, [setHasError, userData.user?._id, socket, setLoading]);
-
+ 
   return (
     <>
       <section>

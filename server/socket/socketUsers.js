@@ -1,114 +1,108 @@
 //const socketio = require('socket.io');
-const {addUser, removeUser, getUser, getAllUsers} = require('./users');
+const { addUser, removeUser, getUser, getAllUsers } = require('./users');
 
+module.exports = function(server) {
+	const io = require('socket.io')(server);
+    // const io = require('socket.io').listen(server);
 
-module.exports = function(server){
+	//connect
+	io.on('connect', (socket) => {
+		//add login user to users socket array
+		socket.on('addUserToArray', (userId) => {
+			const users = addUser(userId, socket.id);
+			io.emit('receiveAllActiveUsers', users);
+		});
 
-    const io = require('socket.io').listen(server);
+		//add new register user to users socket array
+		socket.on('addNewRegisterUser', (userId) => {
+			const users = addUser(userId, socket.id);
+			io.emit('getNewRegisterUser', userId);
+		});
 
-    //connect
-io.on('connect', (socket)=>{
+		socket.on('getAllActiveUsers', () => {
+			const users = getAllUsers();
+			io.emit('receiveAllActiveUsers', users);
+		});
 
-    //add login user to users socket array
-    socket.on('addUserToArray', userId =>{
-        const users = addUser(userId, socket.id);
-        io.emit('receiveAllActiveUsers', users)
-    })
+		//-----chat-----//
 
-    //add new register user to users socket array
-    socket.on('addNewRegisterUser', userId =>{
-        const users = addUser(userId, socket.id);
-        io.emit('getNewRegisterUser', userId);
-    })
+		//send and get message
+		socket.on('newArrivalMessageToServer', ({ senderId, receiver, text }) => {
+			const receiverId = receiver._id;
+			const receivedUser = getUser(receiverId);
+			if (receivedUser) {
+				io.to(receivedUser.socketId).emit('newArrivalMessageToClient', {
+					senderId,
+					receiverId,
+					text
+				});
+			}
+		});
 
-    socket.on('getAllActiveUsers', ()=>{
-        const users = getAllUsers();
-        io.emit('receiveAllActiveUsers', users)
-    })
+		//update the new group that open
+		socket.on('addNewGroup', (receiverId) => {
+			const receivedUser = getUser(receiverId);
+			if (receivedUser) {
+				io.to(receivedUser.socketId).emit('updateGroups');
+			}
+		});
 
-    //-----chat-----//
+		//-----game-----//
 
-    //send and get message
-    socket.on('newArrivalMessageToServer',({senderId, receiver,text}) =>{
-        const receiverId = receiver._id;
-        const receivedUser = getUser(receiverId);
-        if(receivedUser){
-            io.to(receivedUser.socketId).emit('newArrivalMessageToClient',{
-                senderId,
-                receiverId,
-                text
-            })
-        }
-    })
+		//new move
+		socket.on('newMove', (game, receiverId) => {
+			const receivedPlayer = getUser(receiverId);
+			if (receivedPlayer) {
+				io.to(receivedPlayer.socketId).emit('updateNewMove', {
+					game
+				});
+			}
+		});
 
-    //update the new group that open
-    socket.on('addNewGroup', (receiverId) => {
-        const receivedUser = getUser(receiverId);
-        if(receivedUser){
-            io.to(receivedUser.socketId).emit('updateGroups')
-        }
-    })
+		//eaten pieces
+		socket.on('newEatenPiece', (piece, receiverId) => {
+			const receivedPlayer = getUser(receiverId);
+			if (receivedPlayer) {
+				io.to(receivedPlayer.socketId).emit('updateNewEatenPiece', {
+					piece
+				});
+			}
+		});
 
-    //-----game-----//
+		//turns
+		socket.on('turn', (turn, receiverId) => {
+			const receivedPlayer = getUser(receiverId);
+			if (receivedPlayer) {
+				io.to(receivedPlayer.socketId).emit('updateTurn', {
+					turn
+				});
+			}
+		});
 
-    //new move
-    socket.on('newMove',(game, receiverId)=>{
-        const receivedPlayer = getUser(receiverId);
-        if(receivedPlayer){
-            io.to(receivedPlayer.socketId).emit('updateNewMove',{
-                game
-            })
-        }
-    })
+		//alert to other player about the game
+		socket.on('newGame', (senderId, receiverId) => {
+			const receivedPlayer = getUser(receiverId);
+			if (receivedPlayer) {
+				io.to(receivedPlayer.socketId).emit('alertAboutNewGame', {
+					senderId
+				});
+			}
+		});
 
-    //eaten pieces
-    socket.on('newEatenPiece',(piece, receiverId)=>{
-        const receivedPlayer = getUser(receiverId);
-        if(receivedPlayer){
-            io.to(receivedPlayer.socketId).emit('updateNewEatenPiece',{
-                piece
-            })
-        }
-    })
+		// alert other player to clear the game details
+		socket.on('restartGameDetails', (receiverId) => {
+			const receivedPlayer = getUser(receiverId);
+			if (receivedPlayer) {
+				io.to(receivedPlayer.socketId).emit('updateRestartGameDetails');
+			}
+		});
 
-    //turns
-    socket.on('turn',(turn, receiverId)=>{
-        const receivedPlayer = getUser(receiverId);
-        if(receivedPlayer){
-            io.to(receivedPlayer.socketId).emit('updateTurn',{
-                turn
-            })
-        }
-    })
+		//disconnect
+		socket.on('disconnect', () => {
+			const users = removeUser(socket.id);
+			io.emit('receiveAllActiveUsers', users);
+		});
+	});
 
-    //alert to other player about the game
-    socket.on('newGame',(senderId,receiverId)=>{
-        const receivedPlayer = getUser(receiverId);
-        if(receivedPlayer){
-            io.to(receivedPlayer.socketId).emit('alertAboutNewGame',{
-                senderId
-            })
-        }
-    })
-
-    // alert other player to clear the game details
-    socket.on('restartGameDetails',(receiverId)=>{
-        const receivedPlayer = getUser(receiverId);
-        if(receivedPlayer){
-            io.to(receivedPlayer.socketId).emit('updateRestartGameDetails')
-        }
-    })
-
-    //disconnect
-    socket.on('disconnect',()=>{
-        const users = removeUser(socket.id);
-        io.emit('receiveAllActiveUsers', users)
-    })
-});
-
-return io
-
-}
-
-
-
+	return io;
+};
